@@ -14,6 +14,7 @@ public class DateUtil {
 
     /**
      * 获取某月某天的 date
+     *
      * @param month
      * @param day
      * @return
@@ -27,6 +28,7 @@ public class DateUtil {
 
     /**
      * 修改 date 月份
+     *
      * @param date
      * @param month
      */
@@ -39,6 +41,7 @@ public class DateUtil {
 
     /**
      * 在 date 上 加一天
+     *
      * @param date
      * @param n
      */
@@ -52,6 +55,7 @@ public class DateUtil {
 
     /**
      * date 转 字符串（2019-10-10）
+     *
      * @param date
      * @return
      */
@@ -60,8 +64,10 @@ public class DateUtil {
         String result = format.format(date);
         return result;
     }
+
     /**
      * date 转 字符串（10-10）
+     *
      * @param date
      * @return
      */
@@ -118,12 +124,10 @@ public class DateUtil {
         for (int i = 0; i < 20; i++) {
             double random = 100 + (Math.random() * 900);
             System.out.println(random);
-            int n = (int)random;
+            int n = (int) random;
             System.out.println(n);
         }
     }
-
-
 
 
 }

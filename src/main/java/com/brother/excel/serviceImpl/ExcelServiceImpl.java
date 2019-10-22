@@ -42,6 +42,7 @@ public class ExcelServiceImpl implements ExcelService {
 
     /**
      * 读取Excel，并生成文件
+     *
      * @param uploadFile
      */
     @Override
@@ -77,6 +78,7 @@ public class ExcelServiceImpl implements ExcelService {
 
     /**
      * 找到今天上传的 excel 全路径
+     *
      * @param filesName 参数 都是 文件名（无路径）
      * @return
      */
@@ -96,11 +98,11 @@ public class ExcelServiceImpl implements ExcelService {
             System.out.println("比较用文件名 ： " + cmbiExcel2007 + " | " + otherExcel2007);
             if (filesName[i].equals(cmbiExcel2003)) {
                 filesPathList.add(filesName[i]);
-            }else if (noRandomFileName.equals(otherExcel2003)) {
+            } else if (noRandomFileName.equals(otherExcel2003)) {
                 filesPathList.add(filesName[i]);
-            }else if (filesName[i].equals(cmbiExcel2007)) {
+            } else if (filesName[i].equals(cmbiExcel2007)) {
                 filesPathList.add(filesName[i]);
-            }else if (noRandomFileName.equals(otherExcel2007)) {
+            } else if (noRandomFileName.equals(otherExcel2007)) {
                 filesPathList.add(filesName[i]);
             }
         }
@@ -130,7 +132,7 @@ public class ExcelServiceImpl implements ExcelService {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (zipOutputStream != null) {
                 try {
                     zipOutputStream.close();
@@ -157,6 +159,7 @@ public class ExcelServiceImpl implements ExcelService {
 
     /**
      * 输入流 放入 response的 输出流中  提供下载
+     *
      * @param response
      */
     private void buildResponseSteam(HttpServletResponse response) {
@@ -168,7 +171,7 @@ public class ExcelServiceImpl implements ExcelService {
             byte[] buffer = new byte[1024];
             int len = 0;
             // 将 输入流写到   response 输出流
-            while((len=in.read(buffer)) != -1) {
+            while ((len = in.read(buffer)) != -1) {
                 out.write(buffer, 0, len);
             }
             in.close();

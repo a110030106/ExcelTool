@@ -66,7 +66,7 @@ public class Constants {
      * 生成的新excel 字段头
      */
     public static final String[] FIELD_NAME = new String[]{"姓名", "请年假日期", "时长H", "请事假日期", "时长H", "请病假日期", "时长H", "平时加班日期", "时长H", "周末加班日期", "时长H", "调休日期", "时长H",
-                                                           "迟到次数", "迟到时长(分)", "早退次数","早退时长(分)", "上班缺卡次数", "下班缺卡次数"};
+            "迟到次数", "迟到时长(分)", "早退次数", "早退时长(分)", "上班缺卡次数", "下班缺卡次数"};
 
     /**
      * 正常加班前缀
@@ -105,7 +105,6 @@ public class Constants {
      */
     public static final String MERRY_LEAVE = "婚嫁";
     public static final String REST_MERRY_LEAVE = "休息,婚嫁";
-
 
 
 }

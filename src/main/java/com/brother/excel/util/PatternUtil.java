@@ -16,6 +16,7 @@ public class PatternUtil {
 
     /**
      * 是否有数字 (正常，休息。  不统计)
+     *
      * @param string
      * @return
      */
@@ -29,6 +30,7 @@ public class PatternUtil {
 
     /**
      * 获取 月-日   （用于 分字符串后，取 前缀中文）
+     *
      * @param string
      * @return
      */
@@ -46,6 +48,7 @@ public class PatternUtil {
 
     /**
      * 只匹配数字 兼容 小数
+     *
      * @param string
      * @return
      */
@@ -57,7 +60,7 @@ public class PatternUtil {
         String whenNumber = "";
         if (matcher.find()) {
             whenNumber = matcher.group();
-        }else {
+        } else {
             String regexScale = "\\d+";
             p = Pattern.compile(regexScale);
             matcher = p.matcher(string);
@@ -71,6 +74,7 @@ public class PatternUtil {
 
     /**
      * 只匹配字符串
+     *
      * @param string
      * @return
      */
@@ -85,7 +89,6 @@ public class PatternUtil {
         }
         return whenInt;
     }
-
 
 
     public static void main(String[] args) {

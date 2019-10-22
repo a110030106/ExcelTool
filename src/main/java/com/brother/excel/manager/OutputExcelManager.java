@@ -26,7 +26,8 @@ public class OutputExcelManager {
     private ExcelStyleManager excelStyleManager;
 
     /**
-     *  创建Excel 并写入
+     * 创建Excel 并写入
+     *
      * @param file
      * @param sheets
      */
@@ -73,7 +74,7 @@ public class OutputExcelManager {
                 }
             }
         }
-        try{
+        try {
             // 生成输出 文件名
             String newFileName = createFileName(fileName);
             //创建输出文件位置
@@ -82,13 +83,14 @@ public class OutputExcelManager {
             f.flush();
             f.close();
 
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("IO异常");
         }
     }
 
     /**
      * 生成新文件名
+     *
      * @param fileName
      * @return
      */
@@ -98,14 +100,14 @@ public class OutputExcelManager {
         String fileNamePre = fileName.split("_")[0];
         if (fileNamePre.equals(Constants.FILENAME_PREFIX_CMBI)) {
             newFileName += Constants.FILENAME_PREFIX_CMBI + "_";
-        }else {
-            newFileName += (int)(100 + (Math.random() * 900)) + "-" + Constants.FILENAME_PREFIX_OTHER + "_";
+        } else {
+            newFileName += (int) (100 + (Math.random() * 900)) + "-" + Constants.FILENAME_PREFIX_OTHER + "_";
         }
         // 文件后缀（文件类型）
         if (fileName.endsWith(Constants.XLS_SUFFIX)) {
             // 2003
-            newFileName += DateUtil.dateToStringOnlyDate(new Date()) + "." +Constants.XLS_SUFFIX;
-        }else if(fileName.endsWith(Constants.XLSX_SUFFIX)) {
+            newFileName += DateUtil.dateToStringOnlyDate(new Date()) + "." + Constants.XLS_SUFFIX;
+        } else if (fileName.endsWith(Constants.XLSX_SUFFIX)) {
             // 2007
             newFileName += DateUtil.dateToStringOnlyDate(new Date()) + "." + Constants.XLSX_SUFFIX;
         }
@@ -114,6 +116,7 @@ public class OutputExcelManager {
 
     /**
      * 设置sheet
+     *
      * @param sheet
      */
     private void operationSheet(Sheet sheet) {
@@ -123,7 +126,8 @@ public class OutputExcelManager {
 
 
     /**
-     *  写Excel时 创建空表
+     * 写Excel时 创建空表
+     *
      * @param fileName
      * @return
      */
@@ -133,7 +137,7 @@ public class OutputExcelManager {
         if (fileName.endsWith(Constants.XLS_SUFFIX)) {
             // 2003
             workbook = new HSSFWorkbook();
-        }else if(fileName.endsWith(Constants.XLSX_SUFFIX)) {
+        } else if (fileName.endsWith(Constants.XLSX_SUFFIX)) {
             // 2007
             workbook = new XSSFWorkbook();
         }
@@ -142,22 +146,23 @@ public class OutputExcelManager {
 
     /**
      * 检查是否是整数  ，是：则取消小数位显示 （默认会保留1位小数   1.0   2.0）
+     *
      * @param cell
      * @return
      */
     private String checkInt(String cell) {
-        try{
+        try {
             // 未发生异常，说明是Number类型
             Double cellDouble = Double.valueOf(cell);
             // 取整
-            Integer cellInt = (int)Math.floor(cellDouble);
+            Integer cellInt = (int) Math.floor(cellDouble);
             // 查看是否整数，整数则 不保留小数位
-            if (cellDouble % cellInt == 0){
+            if (cellDouble % cellInt == 0) {
                 return cellInt.toString();
-            }else {
+            } else {
                 return cellDouble.toString();
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return cell;
         }
     }

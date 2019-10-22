@@ -32,21 +32,21 @@ public class ExcelController {
     private HttpServlet httpServlet;
 
     @RequestMapping("/upLoadExcel")
-    public String upLoadExcel(Map map, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile) {
+    public String upLoadExcel(Map map, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile) {
         // 安全策略，文件满20个 不让上传
         File fileParent = new File(Constants.OUT_PUT_PATH);
         if (!uploadFile.isEmpty()) {
             if (fileParent.list().length < 20) {
                 excelServiceApi.createExcel(uploadFile);
-                map.put("message","上传成功");
-                map.put("status","1");
+                map.put("message", "上传成功");
+                map.put("status", "1");
             } else {
                 map.put("message", "文件服务器已满");
-                map.put("status","0");
+                map.put("status", "0");
             }
-        }else {
+        } else {
             map.put("message", "未上传文件");
-            map.put("status","0");
+            map.put("status", "0");
         }
         return "index";
     }

@@ -19,7 +19,8 @@ public class ReadExcelManager {
 
     /**
      * 获取该月的有用信息
-     * @param testList  传入一行的 信息
+     *
+     * @param testList 传入一行的 信息
      */
     public List<StatisticsByMonth> readExcel(List<List<String[]>> testList) {
         // 测试数据
@@ -83,8 +84,9 @@ public class ReadExcelManager {
 
     /**
      * 构建返回值，根据传入的常量，获取 这个月 该常量的 信息
-     * @param rowsArr     行信息
-     * @param thingInfos   指定 统计内容
+     *
+     * @param rowsArr    行信息
+     * @param thingInfos 指定 统计内容
      * @return
      */
     private List<StatisticsByDay> readExcelRow(String[] rowsArr, String... thingInfos) {
@@ -118,7 +120,7 @@ public class ReadExcelManager {
                     // 情况
                     conditionInfo.setConditionName(thingInfo);
                     // 开始日期
-                    if (month == 0){
+                    if (month == 0) {
                         month = Integer.valueOf(PatternUtil.onlyNumberPattern(whens[0]).split("-")[0]);
                         date = DateUtil.setMonth(date, month);
                     }
@@ -143,6 +145,7 @@ public class ReadExcelManager {
 
     /**
      * 找出 连续请假 并 处理
+     *
      * @param statisticsByDayList
      */
     private void checkContinuousLeave(List<StatisticsByDay> statisticsByDayList) {
@@ -163,7 +166,7 @@ public class ReadExcelManager {
                 statisticsByDay = statisticsByDayList.get(i);
                 tempStatisticsByDayList.add(statisticsByDay);
                 isContinuou = true;
-            }else {
+            } else {
                 // 当之前为连续，那么此时为最后一天，也要进行标记
                 if (isContinuou) {
                     statisticsByDay = statisticsByDayList.get(i);
@@ -179,14 +182,14 @@ public class ReadExcelManager {
             }
         }
         // 当只有一段、或 结尾 是连续的 一段    的 请假 情况
-        if (null != tempStatisticsByDayList  &&  0 != tempStatisticsByDayList.size()) {
+        if (null != tempStatisticsByDayList && 0 != tempStatisticsByDayList.size()) {
             statisticsByDaysList.add(tempStatisticsByDayList);
         }
 
         // 处理标记
         String allHasTime;
         Boolean isRemainder;
-        if (null != statisticsByDaysList  &&  0 != statisticsByDaysList.size()) {
+        if (null != statisticsByDaysList && 0 != statisticsByDaysList.size()) {
             for (int leaveCount = 0; leaveCount < statisticsByDaysList.size(); leaveCount++) {
                 // 此次连续请假的总时间
                 allHasTime = statisticsByDaysList.get(leaveCount).get(0).getHasTime();
@@ -202,7 +205,7 @@ public class ReadExcelManager {
                     if (!isRemainder) {
                         // 求余数， 并取消 整数时的 小数点
                         String remainder = clearScale(getRemainder(allHasTime));
-                        statisticsByDaysList.get(leaveCount).get(statisticsByDaySize -1).setHasTime(remainder);
+                        statisticsByDaysList.get(leaveCount).get(statisticsByDaySize - 1).setHasTime(remainder);
                     }
                 }
             }
@@ -211,6 +214,7 @@ public class ReadExcelManager {
 
     /**
      * 字符串日期 加 n天
+     *
      * @param dateStr
      * @return
      */
@@ -221,6 +225,7 @@ public class ReadExcelManager {
 
     /**
      * 被一天的工作时间 除后  是否有余数
+     *
      * @param string
      * @return
      */
@@ -235,22 +240,24 @@ public class ReadExcelManager {
 
     /**
      * 求余数 并保留1为小数
+     *
      * @param string
      * @return
      */
     private float getRemainder(String string) {
         Float f = Float.valueOf(string);
-        float remainder = (float)(Math.round((f % Constants.WORK_HOUR)*10))/10;
+        float remainder = (float) (Math.round((f % Constants.WORK_HOUR) * 10)) / 10;
         return remainder;
     }
 
     /**
      * 去除 小数点后的0
+     *
      * @param f
      * @return
      */
     private String clearScale(float f) {
-        int fInt = (int)f;
+        int fInt = (int) f;
         if (fInt == f) {
             return String.valueOf(fInt);
         }

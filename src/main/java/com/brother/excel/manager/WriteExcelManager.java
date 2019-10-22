@@ -12,13 +12,14 @@ import java.util.List;
 
 /**
  * 创建人：王福顺  创建时间：2019/10/14
- *  根据入参 写新的List
+ * 根据入参 写新的List
  */
 @Component
 public class WriteExcelManager {
 
     /**
      * 根据 信息 写 表
+     *
      * @param oneRowInfoList
      * @return
      */
@@ -26,7 +27,7 @@ public class WriteExcelManager {
         List<List<String[]>> newExcel = new ArrayList<>();
 
         // 由于 oneRowInfoList 只写了一页sheet 功能，  所以这里也只输出 1页 sheet
-        List<String[]> sheet =  new ArrayList<>();
+        List<String[]> sheet = new ArrayList<>();
         // 赋值
         buildSheet(sheet, oneRowInfoList);
         newExcel.add(sheet);
@@ -35,8 +36,9 @@ public class WriteExcelManager {
 
     /**
      * 初始化sheet  名头 列名  与  合并单元格
+     *
      * @param sheet
-     * @param statisticsByNameList    每个人的详细 信息
+     * @param statisticsByNameList 每个人的详细 信息
      */
     private List<String[]> buildSheet(List<String[]> sheet, List<StatisticsByMonth> statisticsByNameList) {
         // 构建 表头，列名
@@ -56,6 +58,7 @@ public class WriteExcelManager {
 
     /**
      * 构建每行的 详细信息
+     *
      * @param statisticsByMonth
      * @return
      */
@@ -72,7 +75,7 @@ public class WriteExcelManager {
         }
         // 事假,休息事假
         List<StatisticsByDay> thingLeave = statisticsByMonth.getThingLeave();
-        if (isNotNullByList(thingLeave)){
+        if (isNotNullByList(thingLeave)) {
             String[] thingLeaveInfo = buildInfo(thingLeave);
             nowRowInfo[3] = thingLeaveInfo[0];
             nowRowInfo[4] = thingLeaveInfo[1];
@@ -126,17 +129,19 @@ public class WriteExcelManager {
 
     /**
      * 查看string 为null 或为 ""
+     *
      * @param string
      * @return
      */
     private boolean isNotNullByString(String string) {
-        if (null != string  &&  !"".equals(string)) {
+        if (null != string && !"".equals(string)) {
             return true;
         }
         return false;
     }
+
     private boolean isNotNullByList(List list) {
-        if (null != list  &&  0 != list.size()) {
+        if (null != list && 0 != list.size()) {
             return true;
         }
         return false;
@@ -144,6 +149,7 @@ public class WriteExcelManager {
 
     /**
      * 解析数据  构建 详细 与 时长 格
+     *
      * @param infoList
      * @return
      */
@@ -193,23 +199,24 @@ public class WriteExcelManager {
 
     /**
      * 去掉 整数时的小数位 (.0)
+     *
      * @param whenAll
      * @return
      */
     private String checkWhenAll(float whenAll) {
         String whenStr;
-        int whenInt = (int)whenAll;
+        int whenInt = (int) whenAll;
         if (whenInt == whenAll) {
-            whenStr =  "=" + String.valueOf(whenInt);
-        }else {
-            whenStr =   ("=" + whenAll);
+            whenStr = "=" + String.valueOf(whenInt);
+        } else {
+            whenStr = ("=" + whenAll);
         }
         return whenStr;
     }
 
     /**
      * 查看最长的 是多少行 （需要合并单元格 放名字及其他）
-     * @return  ( 已弃用)
+     * @return (已弃用)
      */
 //    private int maxRowMerge(StatisticsByMonth oneRowInfo) {
 //        List<StatisticsByDay> overTimeList = oneRowInfo.getOverTime();

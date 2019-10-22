@@ -1,5 +1,3 @@
-
-
 var $upLoad = $("#upload");
 var $downLoad = $("#downLoad");
 console.log($upLoad)
@@ -11,7 +9,7 @@ $upLoad.on('click', function () {
     //         alert(1)
     //     }
     // });
-    $downLoad.css("display","block");
+    $downLoad.css("display", "block");
     alert("已生成考勤文件，可以下载")
 
 })

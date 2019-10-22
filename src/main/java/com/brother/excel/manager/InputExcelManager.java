@@ -26,6 +26,7 @@ public class InputExcelManager {
      * 读取Excel 文件  并 生成 List<List<String[]>>
      * 第一层为 sheet
      * 第二、三层为  行 与 列      类似二维数组
+     *
      * @param file
      * @return
      */
@@ -82,6 +83,7 @@ public class InputExcelManager {
 
     /**
      * 获取excel对象  2003  或 2007
+     *
      * @param file
      * @return
      */
@@ -96,7 +98,7 @@ public class InputExcelManager {
             if (fileName.endsWith(Constants.XLS_SUFFIX)) {
                 // 2003
                 workbook = new HSSFWorkbook(inputStream);
-            }else if(fileName.endsWith(Constants.XLSX_SUFFIX)) {
+            } else if (fileName.endsWith(Constants.XLSX_SUFFIX)) {
                 // 2007
                 workbook = new XSSFWorkbook(inputStream);
             }

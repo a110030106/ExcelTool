@@ -6,27 +6,29 @@
 
     <style>
         /*#downLoad{display: none}*/
-        h4{color:red}
+        h4 {
+            color: red
+        }
     </style>
 </head>
 <body>
-    <h2>考勤生成</h2>
-    <!-- 上传 -->
-    <form action="/upLoadExcel" method="post" enctype="multipart/form-data">
-        <input type="file" name="uploadFile" />
-        <h2><input id="upLoad" type="submit" value="点击上传" /></h2>
-    </form>
-    <h4 th:text="${message}"></h4>
+<h2>考勤生成</h2>
+<!-- 上传 -->
+<form action="/upLoadExcel" method="post" enctype="multipart/form-data">
+    <input type="file" name="uploadFile"/>
+    <h2><input id="upLoad" type="submit" value="点击上传"/></h2>
+</form>
+<h4 th:text="${message}"></h4>
 
-    </br>
-    </br>
-    </br>
+</br>
+</br>
+</br>
 
-    <h3>支持逐一上传后，统一下载</h3>
-    <!-- 下载 -->
-    <a id="downLoad" href="/downLoadExcel" >点击下载</a>
+<h3>支持逐一上传后，统一下载</h3>
+<!-- 下载 -->
+<a id="downLoad" href="/downLoadExcel">点击下载</a>
 
-    <script type="text/javascript" rel="stylesheet" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-    <script type="text/javascript" rel="stylesheet" src="/downLoadDisplay.js"></script>
+<script type="text/javascript" rel="stylesheet" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript" rel="stylesheet" src="/downLoadDisplay.js"></script>
 </body>
 </html>

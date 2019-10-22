@@ -15,6 +15,7 @@ public class ExcelStyleManager {
 
     /**
      * 全局样式
+     *
      * @param workbook
      * @return
      */
@@ -38,18 +39,19 @@ public class ExcelStyleManager {
 
     /**
      * 个别单元格样式
+     *
      * @return
      */
     public void buildSelfStyle(CellStyle cellStyle, int rowNum, Workbook workbook, Sheet sheet) {
 
         // 奇数列（前6项的统计 时间与时长 列）
-        if (rowNum > 0  &&  rowNum <= 12  &&  rowNum % 2 != 0) {
+        if (rowNum > 0 && rowNum <= 12 && rowNum % 2 != 0) {
             // 比例 0.00325
             sheet.setColumnWidth(rowNum, 5538);
         }
 
         // 偶数列（前6项的统计 时间与时长 列）
-        if (rowNum > 0  &&  rowNum <= 12  &&  rowNum % 2 == 0) {
+        if (rowNum > 0 && rowNum <= 12 && rowNum % 2 == 0) {
             // 比例 0.00325
             sheet.setColumnWidth(rowNum, 3077);
         }
